@@ -239,7 +239,7 @@
                             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"/>
                         </svg>
                        
-                        <span>WalletConnect</span>
+                        <span>Connect Wallet</span>
                     </button>
                 </div>
             </div>
@@ -439,7 +439,7 @@
                 liveText: "Live Airdrop",
                 successMsg: "🎉 बधाई हो! आपका कोड सही है। अब अपना वॉलेट कनेक्ट करें।",
                 errorMsg: "❌ गलत कोड! कृपया सही रिडीम कोड डालें।",
-                walletConnected: "🔗 {wallet} वॉलेट कनेक्ट हो गया! आपके $50 जल्द ही आपके वॉलेट में आ जाएंगे।"
+                Connect Walleted: "🔗 {wallet} वॉलेट कनेक्ट हो गया! आपके $50 जल्द ही आपके वॉलेट में आ जाएंगे।"
             },
             en: {
                 heroTitle: "$50 FREE",
@@ -466,7 +466,7 @@
                 liveText: "Live Airdrop",
                 successMsg: "🎉 Congratulations! Your code is correct. Please connect your wallet now.",
                 errorMsg: "❌ Wrong code! Please enter the correct redeem code.",
-                walletConnected: "🔗 {wallet} wallet connected! Your $50 will be in your wallet soon."
+                Connect Walleted: "🔗 {wallet} wallet connected! Your $50 will be in your wallet soon."
             }
         };
 
@@ -575,7 +575,7 @@
                 button.addEventListener('click', function() {
                     const wallet = this.dataset.wallet;
                     const t = translations[currentLanguage];
-                    const message = t.walletConnected.replace('{wallet}', wallet);
+                    const message = t.Connect Walleted.replace('{wallet}', wallet);
                     showToast(message, 'success');
                 });
             });
